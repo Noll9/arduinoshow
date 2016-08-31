@@ -1,0 +1,40 @@
+#ifndef ARDUINOSHOW_H
+#define ARDUINOSHOW_H
+
+#include <QMainWindow>
+
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
+
+namespace Ui {
+class ArduinoShow;
+}
+
+class ArduinoShow : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    explicit ArduinoShow(QWidget *parent = 0);
+    ~ArduinoShow();
+
+private slots:
+    void on_listButton_clicked();
+
+    void on_connectButton_clicked();
+
+    void readArduionoData();
+
+
+    void on_initButton_clicked();
+
+    void on_disconnectButton_clicked();
+
+    void handleErrors(QSerialPort::SerialPortError);
+
+private:
+    Ui::ArduinoShow *ui;
+    QSerialPort *serialPort;
+};
+
+#endif // ARDUINOSHOW_H
